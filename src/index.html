@@ -8,6 +8,10 @@
             constructor(){
                 super();
                 console.log('MyCustomElement');
+                alert('my-custom-element');
+            }
+            connectedCallback(){
+                console.log('MyCustomElement loaded into the DOM');
             }
         }
         window.customElements.define('my-custom-element', MyCustomElement);
