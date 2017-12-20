@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Simple Element</title>
+    <script>
+        class MyCustomElement extends HTMLElement {
+            constructor(){
+                super();
+                console.log('MyCustomElement');
+            }
+        }
+        window.customElements.define('my-custom-element', MyCustomElement);
+    </script>
+</head>
+<body>
+
+<p id="simple-p">Simple paragraph</p>
+
+<my-custom-element></my-custom-element>
+
+</body>
+</html>
