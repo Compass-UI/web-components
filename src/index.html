@@ -7,11 +7,20 @@
         class MyCustomElement extends HTMLElement {
             constructor(){
                 super();
-                console.log('MyCustomElement');
+                console.log('MyCustomElement constructor');
                 alert('my-custom-element');
             }
             connectedCallback(){
                 console.log('MyCustomElement loaded into the DOM');
+            }
+            static get observedAttributes(){
+                return ["demo"]
+            }
+            attributeChangedCallback(name, oldValue, newValue){
+                console.log('attribute changed', name, oldValue, newValue);
+            }
+            disconnectedCallback(){
+                console.log('MyCustomElement removed from the DOM');
             }
         }
         window.customElements.define('my-custom-element', MyCustomElement);
@@ -21,7 +30,14 @@
 
 <p id="simple-p">Simple paragraph</p>
 
-<my-custom-element></my-custom-element>
+<!-- <my-custom-element></my-custom-element> -->
+<script>
+    let $ce = document.createElement('my-custom-element');
+    setTimeout( ()=> {
+        //Add MyCustomElement to the DOM
+        document.body.appendChild($ce);
+    }, 3000)
+</script>
 
 </body>
 </html>
